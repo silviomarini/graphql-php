@@ -1,0 +1,50 @@
+query {
+  format(lang:"en"){
+    date,
+    datetime,
+    price,
+    eth_price,
+    percentage
+  }
+  collections(limit:2){
+    id,
+    name,
+    img,
+    short_description,
+    description,
+    contract,
+    volume,
+    transfers,
+    minters,
+    market_cap,
+    floor_price,
+    avg_price,
+    owners,
+    circulating_supply,
+    volume_change,
+    market_cap_eth,
+    floor_price_change,
+    avg_price_change
+  }
+}
+
+//mint tracker
+query {
+  collections(limit:100){
+    id,
+    name,
+    img,
+    minters,
+    first_mint,
+    fomo,
+    mints,
+    mints_change,
+    mint_volume,
+    mint_volume_change,
+    minters_change,
+    mint_whales,
+    mint_whales_change,
+    mint_cost
+  }
+}
+
