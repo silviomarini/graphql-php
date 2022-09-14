@@ -18,11 +18,11 @@ use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Type\Definition\ResolveInfo;
 use GraphQL\Type\Definition\Type;
 
-class QueryType extends ObjectType
+class QueryType
 {
     public function __construct()
     {
-        parent::__construct([
+        $queryType = new ObjectType([
             'name' => 'Query',
             'description' => 'Standard operation for Rarespot GraphQL API',
             'fields' => [
@@ -89,6 +89,74 @@ class QueryType extends ObjectType
              ],
             'resolveField' => fn ($rootValue, array $args, $context, ResolveInfo $info) => $this->{$info->fieldName}($rootValue, $args, $context, $info),
         ]);
+            
+//        parent::__construct([
+//            'name' => 'Query',
+//            'description' => 'Standard operation for Rarespot GraphQL API',
+//            'fields' => [
+//                'collection' => [
+//                    'type' => Types::collection(),
+//                    'description' => 'Returns collection by internal RS id ',
+//                    'args' => [
+//                        'id' => new NonNull(Types::id()),
+//                    ],
+//                ],
+//                'collections' => [
+//                    'type' => new ListOfType(Types::collection()),
+//                    'description' => 'Returns list of collections',
+//                    'args' => [
+//                        'limit' => [
+//                            'type' => Types::int(),
+//                            'description' => 'Number of collections to be returned',
+//                            'defaultValue' => 100,
+//                        ],
+//                        'period' => [
+//                            'type' => Types::string(),
+//                            'description' => 'Unit of time to be analyzed, example 7d for 7 days',
+//                            'defaultValue' => '7d',
+//                        ],
+//                    ],
+//                ],
+//                'event' => [
+//                    'type' => Types::event(),
+//                    'description' => 'Returns event by id',
+//                    'args' => [
+//                        'id' => new NonNull(Types::id()),
+//                    ],
+//                ],
+//                'events' => [
+//                    'type' => new ListOfType(Types::event()),
+//                    'description' => 'Returns list of events',
+//                    'args' => [
+//                        'limit' => [
+//                            'type' => Types::int(),
+//                            'description' => 'Number of events to be returned',
+//                            'defaultValue' => 10,
+//                        ],
+//                    ],
+//                ],
+//                'format' => [
+//                    'type' => Types::format(),
+//                    'description' => 'Returns formatting rules',
+//                    'args' => [
+//                        'lang' => new NonNull(Types::string()),
+//                    ],
+//                ],
+//                'distribution' => [
+//                    'type' => Types::distribution(),
+//                    'description' => 'Returns distribution of elements',
+//                    'args' => [
+//                        'id' => Types::string(),
+//                    ],
+//                ],
+//                'distributionElement' => [
+//                    'type' => Types::distributionElement(),
+//                    'description' => 'distribution elements',
+//                    'args' => [],
+//                ],       
+//             ],
+//            'resolveField' => fn ($rootValue, array $args, $context, ResolveInfo $info) => $this->{$info->fieldName}($rootValue, $args, $context, $info),
+//        ]);
     }
     
     

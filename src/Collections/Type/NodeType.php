@@ -9,17 +9,25 @@ use GraphQL\Type\Definition\InterfaceType;
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Utils\Utils;
 
-class NodeType extends InterfaceType
+class NodeType
 {
     public function __construct()
     {
-        parent::__construct([
+        $queryType = new InterfaceType([
             'name' => 'Node',
             'fields' => [
                 'id' => Types::id(),
             ],
             'resolveType' => [$this, 'resolveNodeType'],
         ]);
+        
+//        parent::__construct([
+//            'name' => 'Node',
+//            'fields' => [
+//                'id' => Types::id(),
+//            ],
+//            'resolveType' => [$this, 'resolveNodeType'],
+//        ]);
     }
 
     /**

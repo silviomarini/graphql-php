@@ -9,11 +9,11 @@ use GraphQL\Type\Definition\InterfaceType;
 use GraphQL\Type\Definition\ObjectType;
 use GraphQL\Utils\Utils;
 
-class PriceType extends InterfaceType
+class PriceType
 {
     public function __construct()
     {
-        parent::__construct([
+        $queryType = new InterfaceType([
             'name' => 'Price',
             'fields' => [
                 'value' => Types::float(),
@@ -23,5 +23,15 @@ class PriceType extends InterfaceType
             ],
             'resolveType' => [$this, 'resolvePriceType'],
         ]);
+//        parent::__construct([
+//            'name' => 'Price',
+//            'fields' => [
+//                'value' => Types::float(),
+//                'currency' => [
+//                    'type' => Types::string(),
+//                ],
+//            ],
+//            'resolveType' => [$this, 'resolvePriceType'],
+//        ]);
     }
 }
